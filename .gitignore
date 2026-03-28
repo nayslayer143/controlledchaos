@@ -1,0 +1,13 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Reference images (not part of the system)
+*.jpeg
+*.png
+
+# OS
+Thumbs.db
+.DS_Store

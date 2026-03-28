@@ -1,0 +1,61 @@
+# Controlled Chaos Design System
+
+## What This Is
+A creative design system for building award-level UI/UX — inspired by Awwwards SOTD winners and Cargo graphic templates. NOT a corporate system. A system of controlled chaos.
+
+## How to Use This System
+
+When building any page or component:
+
+1. **Choose a mode** (or mix them):
+   - `swiss` — Neue Grafik editorial, grid-locked, systematic
+   - `brutalist` — Maximum volume, raw, unapologetic
+   - `immersive` — Dark atmospheric, scroll-driven, experiential
+   - `kinetic` — Typography in motion, animated, alive
+   - `gallery` — White cube minimal, work speaks for itself
+
+2. **Set the forces** via `data-forces` attribute on the root element
+
+3. **Choose a mood** via `data-mood` attribute:
+   `void`, `void-inverse`, `dusk`, `signal`, `earth`, `frost`, `blaze`, `bruise`, `concrete`
+
+4. **Use the typographic voices**:
+   - `.voice-monument` — Architectural display (Space Grotesk)
+   - `.voice-editorial` — Elegant serif (Playfair Display)
+   - `.voice-swiss` — Systematic sans (Inter)
+   - `.voice-brutalist` — Raw mono (Space Mono)
+   - `.voice-expressive` — Versatile (DM Sans)
+
+5. **Import the tokens**:
+   ```html
+   <link rel="stylesheet" href="tokens/layout.css">
+   <link rel="stylesheet" href="tokens/typography.css">
+   <link rel="stylesheet" href="tokens/color.css">
+   <link rel="stylesheet" href="tokens/motion.css">
+   <link rel="stylesheet" href="tokens/forces.css">
+   ```
+
+## Design Principles (Non-Negotiable)
+- Type is the hero. If it works without color/images, you've won.
+- Tension is beauty. Near-symmetry over perfect symmetry.
+- Whitespace is pressurized, not empty.
+- Motion has meaning or it doesn't exist.
+- Break rules only after understanding why they exist.
+- The screen is not paper — use viewport, scroll, pointer, time.
+
+## File Structure
+- `tokens/` — CSS custom properties (forces, typography, color, motion, layout)
+- `modes/` — Complete aesthetic presets (reserved for future CSS-only mode files)
+- `components/` — Reusable component patterns (reserved for future)
+- `showcase/` — Live demos of each mode (index, swiss, brutalist, immersive, kinetic, gallery)
+
+## Key CSS Variables
+- `--type-massive` through `--type-micro` — Non-linear type scale
+- `--color-bg`, `--color-fg`, `--color-accent-1`, `--color-discord` — Mood-driven colors
+- `--force-structure` through `--force-shout` — Creative force dials (0 to 1)
+- `--dur-instant` through `--dur-meditate` — Motion tempo
+- `--ease-out-expo`, `--ease-spring`, `--ease-snap` — Timing curves
+
+## When Creating New Pages
+Always start from the five forces — where does this piece live on each spectrum?
+Then pick the mode, mood, and voices that match. Compose from tokens, not from scratch.
