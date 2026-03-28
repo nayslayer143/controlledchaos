@@ -1,5 +1,20 @@
 # Controlled Chaos Design System
 
+## The Three Axioms (These override everything else)
+
+**I. Hierarchy is the only job.** Every pixel answers: what first, what second, what never? Size is loudest, then weight, color, position, motion. The most powerful tool is omission.
+
+**II. Tension is beauty.** Near-symmetry over perfect. Every composition needs one discord — one break that proves the rest is intentional. Whitespace is counterforce, not absence. Grids exist to be *almost* followed.
+
+**III. The medium is time.** Screens are not posters. Revelation over time creates narrative. Scroll, viewport, pointer, and elapsed time are design variables. If it could be printed unchanged, it's not using the screen.
+
+**Decision engine — apply to every choice:**
+1. Does this serve hierarchy? → Remove or subordinate if not.
+2. Does this create intentional tension? → Add a discord if everything is too resolved.
+3. Does this use the medium? → Make it respond to scroll/viewport/pointer/time.
+
+See `AXIOMS.md` for the full derivation, corollaries, and the relationship between craft and taste.
+
 ## What This Is
 A creative design system for building award-level UI/UX — inspired by Awwwards SOTD winners and Cargo graphic templates. NOT a corporate system. A system of controlled chaos.
 
