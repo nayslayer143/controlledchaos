@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SF VIBE FEST 2027 — The Future Gets a Neighborhood</title>
+  <meta name="description" content="A seven-day citywide convergence of capital, code, culture, music, art, and civic imagination. San Francisco, October 25–31, 2027.">
+  <meta name="theme-color" content="#f5efe0">
+  <meta property="og:type" content="event">
+  <meta property="og:title" content="SF VIBE FEST 2027">
+  <meta property="og:description" content="The future gets a neighborhood. October 25–31, 2027.">
+  <meta property="og:url" content="https://sfvibefest.example/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +21,7 @@
   <link rel="stylesheet" href="../tokens/motion.css">
   <link rel="stylesheet" href="../tokens/forces.css">
   <link rel="stylesheet" href="../tokens/textures.css">
+  <link rel="stylesheet" href="../tokens/states.css">
   <link rel="stylesheet" href="../sections/sections.css">
 
   <!-- STYLE-OVERRIDES: emitted from adapters/examples/sf-vibe-fest.json -->
@@ -291,7 +298,28 @@
 </head>
 <body>
 
-  <!-- HERO: editorial variant — the foundational promise -->
+  <!-- 1. NAV: sticky top bar with hamburger drawer -->
+  <nav class="cc-section cc-nav" data-pattern="nav" data-variant="default" aria-label="Primary">
+    <div class="container --wide cc-nav__inner">
+      <a class="cc-nav__brand voice-monument" href="#">SF VIBE FEST</a>
+      <button class="cc-nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="cc-nav-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <div class="cc-nav__menu" id="cc-nav-menu">
+        <ul class="cc-nav__links">
+          <li><a class="cc-nav__link voice-swiss --label" href="#program">Program</a></li>
+          <li><a class="cc-nav__link voice-swiss --label" href="#sponsors">Sponsors</a></li>
+          <li><a class="cc-nav__link voice-swiss --label" href="#civic">Civic</a></li>
+        </ul>
+        <a class="cc-nav__cta voice-swiss --label" href="mailto:jordan@shiny.new">Apply</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    (function(){var n=document.querySelector('.cc-nav');if(!n)return;var t=n.querySelector('.cc-nav__toggle'),m=n.querySelector('.cc-nav__menu');document.documentElement.style.setProperty('--nav-height',(n.offsetHeight||64)+'px');t.addEventListener('click',function(){var o=n.toggleAttribute('data-open');t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');});n.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.hasAttribute('data-open')){n.removeAttribute('data-open');t.setAttribute('aria-expanded','false');t.focus();}});m.addEventListener('click',function(e){if(e.target.closest('a')&&n.hasAttribute('data-open')){n.removeAttribute('data-open');t.setAttribute('aria-expanded','false');}});var s=function(){if(window.scrollY>4)n.setAttribute('data-scrolled','');else n.removeAttribute('data-scrolled');};window.addEventListener('scroll',s,{passive:true});s();})();
+  </script>
+
+  <!-- 2. HERO: editorial variant — the foundational promise -->
   <section class="cc-section cc-hero" data-pattern="hero" data-variant="editorial">
     <div class="container --regular flow motion-reveal">
       <span class="cc-hero__eyebrow voice-swiss --label">SF VIBE FEST · OCT 25–31, 2027 · SAN FRANCISCO</span>
@@ -341,7 +369,68 @@
     </div>
   </section>
 
-  <!-- QUOTE: gutter variant — the thesis line as pull quote, electric-blue gutter -->
+  <!-- 5. FEATURE-GRID: program pillars -->
+  <section class="cc-section cc-feature-grid" data-pattern="feature-grid" data-variant="default" id="program">
+    <div class="container --wide flow motion-reveal">
+      <span class="cc-feature-grid__eyebrow voice-swiss --label">PROGRAM</span>
+      <h2 class="cc-feature-grid__heading voice-monument --display">One festival. Three economic engines. Seven nights.</h2>
+      <div class="cc-feature-grid__items motion-stagger">
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Capital Summit</h3>
+          <p class="cc-feature__body voice-swiss">Curated Tue–Thu core for LPs, family offices, GPs, sovereign funds, foundations, and select founders. Application-based. White-glove.</p>
+        </div>
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7l10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Core Conference</h3>
+          <p class="cc-feature__body voice-swiss">Seven days for founders, operators, brands, creators, civic leaders, designers, artists, media, and technologists.</p>
+        </div>
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c-4 0-7 3-7 7 0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Civic Festival</h3>
+          <p class="cc-feature__body voice-swiss">Public block parties, museum nights, art, music, markets, food, and neighborhood activations. Free where it counts.</p>
+        </div>
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 7l5 4M18 7l-5 4M6 17l5-4M18 17l-5-4"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Neighborhood Nights</h3>
+          <p class="cc-feature__body voice-swiss">Each evening belongs to a different district. Co-produced with local merchants, artists, venues, cultural districts, nonprofits.</p>
+        </div>
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Civic Return</h3>
+          <p class="cc-feature__body voice-swiss">Annual report on hotel nights, vendor revenue, artist compensation, neighborhood grants, small-business participation.</p>
+        </div>
+        <div class="cc-feature">
+          <div class="cc-feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></svg></div>
+          <h3 class="cc-feature__title voice-monument">Fog City Futurism</h3>
+          <p class="cc-feature__body voice-swiss">A premium visual identity blending San Francisco's cultural past with its technological future. Editorial, civic, electric.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PRODUCT-SHOWCASE: city-as-campus annotated map -->
+  <section class="cc-section cc-showcase" data-pattern="product-showcase" data-variant="callouts">
+    <div class="container --wide">
+      <div class="cc-showcase__grid motion-reveal">
+        <div class="cc-showcase__copy">
+          <h2 class="cc-showcase__heading voice-monument --display">The city is the campus.</h2>
+          <p class="cc-showcase__body voice-swiss">SF VIBE FEST is not a convention trapped inside a convention center. For one week, San Francisco becomes a living map of the future. The route is the story; the movement through the city is the mechanism.</p>
+        </div>
+        <div class="cc-showcase__frame">
+          <div class="cc-showcase__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="cc-img-placeholder cc-showcase__image" data-slot="city-map"></div>
+          <button class="cc-showcase__callout" style="left:40%;top:30%" aria-label="Moscone Center"><span class="cc-showcase__callout-num">1</span><span class="cc-showcase__callout-label">Moscone</span></button>
+          <button class="cc-showcase__callout" style="left:62%;top:35%" aria-label="Embarcadero"><span class="cc-showcase__callout-num">2</span><span class="cc-showcase__callout-label">Embarcadero</span></button>
+          <button class="cc-showcase__callout" style="left:70%;top:65%" aria-label="Dogpatch"><span class="cc-showcase__callout-num">3</span><span class="cc-showcase__callout-label">Dogpatch</span></button>
+          <button class="cc-showcase__callout" style="left:45%;top:55%" aria-label="Mission"><span class="cc-showcase__callout-num">4</span><span class="cc-showcase__callout-label">Mission</span></button>
+          <button class="cc-showcase__callout" style="left:30%;top:50%" aria-label="Castro"><span class="cc-showcase__callout-num">5</span><span class="cc-showcase__callout-label">Castro</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. QUOTE: gutter variant — the thesis line as pull quote, electric-blue gutter -->
   <section class="cc-section cc-quote" data-pattern="quote" data-variant="gutter">
     <div class="container --regular motion-reveal">
       <blockquote class="cc-quote__body">
@@ -351,30 +440,7 @@
     </div>
   </section>
 
-  <!-- FULL-BLEED: the brand promise -->
-  <section class="cc-section cc-bleed" data-pattern="full-bleed" data-variant="type">
-    <div class="cc-bleed__content cc-bleed__content--type motion-reveal">
-      <span class="voice-monument" data-bleed-text>The future does not need another convention. It needs a place to become human.</span>
-    </div>
-  </section>
-
-  <!-- TWO-COLUMN: the public sees the festival / the business is the room -->
-  <section class="cc-section cc-two-col" data-pattern="two-column" data-variant="dialogue">
-    <div class="container --wide">
-      <div class="cc-two-col__grid motion-stagger">
-        <div class="cc-two-col__col">
-          <h3 class="cc-two-col__heading voice-monument">The public sees the festival.</h3>
-          <p class="cc-two-col__body voice-swiss">Seven neighborhood block parties. Museum nights. Public art. Live music. Markets. Free where it counts. Real where it matters. The cultural electricity of the most magnetic week San Francisco has produced in a decade — designed to be walked, not gated.</p>
-        </div>
-        <div class="cc-two-col__col">
-          <h3 class="cc-two-col__heading voice-monument">The business is the room.</h3>
-          <p class="cc-two-col__body voice-swiss">A curated Tuesday–Thursday Capital Summit nested inside the seven-day festival. LPs, family offices, GPs, sovereign funds, foundations, and select founders. Application-based. Application-only. White-glove. The room sets the future before it becomes consensus.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS: the 7-night arc, timeline variant -->
+  <!-- 8. PROCESS: the 7-night arc, timeline variant -->
   <section class="cc-section cc-process" data-pattern="process" data-variant="timeline">
     <div class="container --regular flow motion-reveal">
       <h2 class="cc-process__heading voice-editorial --display">Seven nights. Seven neighborhoods. One civic pulse.</h2>
@@ -411,58 +477,138 @@
     </div>
   </section>
 
-  <!-- STAT-GRID #2: the equation of scale -->
-  <section class="cc-section cc-stat-grid" data-pattern="stat-grid" data-variant="default">
+  <!-- 9. TESTIMONIAL: host-committee placeholder (no fake bios per v2 style guide) -->
+  <section class="cc-section cc-testimonial" data-pattern="testimonial" data-variant="featured">
+    <div class="container --regular motion-reveal">
+      <div class="cc-testimonial__items">
+        <figure class="cc-quote-card">
+          <blockquote class="cc-quote-card__quote">
+            <p class="voice-editorial --display">The festival proves the city can host its own future without losing its soul — premium where the rooms demand it, public where the streets need it, local at every block party.</p>
+          </blockquote>
+          <figcaption class="cc-quote-card__author">
+            <span class="cc-quote-card__avatar" aria-hidden="true">HC</span>
+            <span class="cc-quote-card__meta">
+              <span class="cc-quote-card__name voice-monument">Host Committee</span>
+              <span class="cc-quote-card__role voice-swiss">SF Vibe Fest 2027 · Founding Member</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PRICING: three application tiers (no $ amounts — invitation-tiered) -->
+  <section class="cc-section cc-pricing" data-pattern="pricing" data-variant="cards" id="sponsors">
     <div class="container --wide flow motion-reveal">
-      <h2 class="cc-stat-grid__heading voice-monument --display">Premium access funds public wonder.</h2>
-      <div class="cc-stat-grid__items motion-stagger">
-        <div class="cc-stat">
-          <span class="cc-stat__num voice-monument">$59M</span>
-          <span class="cc-stat__label voice-swiss --label">base-case revenue</span>
-          <span class="cc-stat__caption voice-swiss">Capital Summit + sponsor anchors + premium passes. Spectacle is public; economics are disciplined.</span>
+      <span class="cc-pricing__eyebrow voice-swiss --label">ACCESS</span>
+      <h2 class="cc-pricing__heading voice-monument --display">By invitation. By application. By neighborhood.</h2>
+      <div class="cc-pricing__tiers motion-stagger">
+        <div class="cc-tier">
+          <h3 class="cc-tier__name voice-monument">Public Festival</h3>
+          <p class="cc-tier__price"><span class="cc-tier__amount voice-monument">Free</span><span class="cc-tier__period voice-brutalist">where it counts</span></p>
+          <ul class="cc-tier__features">
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Seven neighborhood block parties</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Public art + museum nights</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Live music + markets</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Civic forums + city programming</li>
+          </ul>
+          <a class="cc-tier__cta voice-swiss --label" href="mailto:jordan@shiny.new">Stay in touch</a>
         </div>
-        <div class="cc-stat">
-          <span class="cc-stat__num voice-monument">$400M+</span>
-          <span class="cc-stat__label voice-swiss --label">civic impact target</span>
-          <span class="cc-stat__caption voice-swiss">Scaled from SXSW's $380.9M benchmark. Year-one realistic.</span>
+        <div class="cc-tier cc-tier--recommended">
+          <span class="cc-tier__badge voice-swiss --label">Most requested</span>
+          <h3 class="cc-tier__name voice-monument">Core Conference</h3>
+          <p class="cc-tier__price"><span class="cc-tier__amount voice-monument">Apply</span><span class="cc-tier__period voice-brutalist">7-day pass</span></p>
+          <ul class="cc-tier__features">
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Full mainstage + breakout access</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Expo + founder demos</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Sponsor houses + cultural salons</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Museum-night patron access</li>
+          </ul>
+          <a class="cc-tier__cta voice-swiss --label" href="mailto:jordan@shiny.new">Apply</a>
         </div>
-        <div class="cc-stat">
-          <span class="cc-stat__num voice-monument">$1B+</span>
-          <span class="cc-stat__label voice-swiss --label">aspirational impact</span>
-          <span class="cc-stat__caption voice-swiss">Hotel nights, vendor revenue, artist compensation, neighborhood grants, media valuation compounded.</span>
-        </div>
-        <div class="cc-stat">
-          <span class="cc-stat__num voice-monument">52k</span>
-          <span class="cc-stat__label voice-swiss --label">hotel-night target</span>
-          <span class="cc-stat__caption voice-swiss">Direct hotel tax flows back to the Live Music Fund and neighborhood culture.</span>
+        <div class="cc-tier">
+          <h3 class="cc-tier__name voice-monument">Capital Summit</h3>
+          <p class="cc-tier__price"><span class="cc-tier__amount voice-monument">By invitation</span><span class="cc-tier__period voice-brutalist">Tue–Thu</span></p>
+          <ul class="cc-tier__features">
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>LP / family-office / GP roundtables</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Allocator breakfasts + founder matching</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>SHACK15 + Embarcadero private salons</li>
+            <li class="voice-swiss"><svg class="cc-tier__check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Everything in Core Conference</li>
+          </ul>
+          <a class="cc-tier__cta voice-swiss --label" href="mailto:jordan@shiny.new">Request invitation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE #2: sponsors as civic architects -->
-  <section class="cc-section cc-quote" data-pattern="quote" data-variant="gutter">
-    <div class="container --regular motion-reveal">
-      <blockquote class="cc-quote__body">
-        <p class="cc-quote__text voice-editorial --display">The best sponsors will not ask, "Where is my logo?" They will ask, "What part of the city did we help bring alive?"</p>
-        <cite class="cc-quote__attribution voice-swiss --label">— Sponsors as civic architects · v2 Super Deck</cite>
-      </blockquote>
+  <!-- 11. INTEGRATION-LOGOS: venue ecosystem -->
+  <section class="cc-section cc-integrations" data-pattern="integration-logos" data-variant="grid">
+    <div class="container --wide flow motion-reveal">
+      <h2 class="cc-integrations__heading voice-swiss --label">VENUE ECOSYSTEM</h2>
+      <ul class="cc-integrations__items">
+        <li class="cc-integrations__item"><span class="voice-monument">Moscone</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">SFMOMA</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">SHACK15</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">Exploratorium</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">Ferry Building</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">Power Station</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">Fort Mason</span></li>
+        <li class="cc-integrations__item"><span class="voice-monument">Frontier Tower</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- CTA: the invitation -->
-  <section class="cc-section cc-cta" data-pattern="cta" data-variant="discord">
+  <!-- 12. FULL-BLEED: the brand promise -->
+  <section class="cc-section cc-bleed" data-pattern="full-bleed" data-variant="type">
+    <div class="cc-bleed__content cc-bleed__content--type motion-reveal">
+      <span class="voice-monument" data-bleed-text>The future does not need another convention. It needs a place to become human.</span>
+    </div>
+  </section>
+
+  <!-- 13. FAQ: accordion of common questions -->
+  <section class="cc-section cc-faq" data-pattern="faq" data-variant="accordion" id="civic">
     <div class="container --regular flow motion-reveal">
-      <h2 class="cc-cta__heading voice-monument --display">Once a year, the room opens.</h2>
-      <p class="cc-cta__supporting voice-swiss">You do not have to live in San Francisco. But if you are shaping the future — funding it, building it, regulating it, designing it, performing it, feeding it, questioning it, or trying to make it more human — once a year, you need to be here. Anchor sponsorships, founding partnerships, host-committee invitations, and allocator applications are open.</p>
-        <a class="cc-cta__action voice-swiss --label" href="mailto:jordan@shiny.new">
-          CONTACT JORDAN@SHINY.NEW
-          <span class="cc-cta__arrow" aria-hidden="true">→</span>
-        </a>
+      <h2 class="cc-faq__heading voice-monument --display">Questions, briefly.</h2>
+      <div class="cc-faq__items">
+        <details class="cc-faq__item">
+          <summary class="cc-faq__question voice-monument">How do I get a pass?<span class="cc-faq__marker" aria-hidden="true">+</span></summary>
+          <div class="cc-faq__answer"><p class="voice-swiss">Core Conference and Capital Summit are application-based. Email jordan@shiny.new with your name, role, and what you'd contribute. The public Civic Festival is free and open — no pass required.</p></div>
+        </details>
+        <details class="cc-faq__item">
+          <summary class="cc-faq__question voice-monument">Is the festival public or private?<span class="cc-faq__marker" aria-hidden="true">+</span></summary>
+          <div class="cc-faq__answer"><p class="voice-swiss">Both. The public sees the festival — block parties, museum nights, music, food, public art. The business is the room — the Capital Summit and curated tracks nested inside. Premium access funds public wonder.</p></div>
+        </details>
+        <details class="cc-faq__item">
+          <summary class="cc-faq__question voice-monument">What's the civic return?<span class="cc-faq__marker" aria-hidden="true">+</span></summary>
+          <div class="cc-faq__answer"><p class="voice-swiss">Every year we publish a Civic Return Report: hotel nights, local vendor revenue, artist compensation, small-business participation, neighborhood grants, public attendance, city tax impact, and more. The festival must leave the city stronger than it found it.</p></div>
+        </details>
+        <details class="cc-faq__item">
+          <summary class="cc-faq__question voice-monument">When do block parties happen?<span class="cc-faq__marker" aria-hidden="true">+</span></summary>
+          <div class="cc-faq__answer"><p class="voice-swiss">Every night of the festival. Each evening belongs to a different neighborhood (SoMa Mon, Embarcadero Tue, Mission Wed, Dogpatch Thu, Fillmore Fri, Castro Sat, Bayview Sun). All free, all public, all co-produced with local merchants, artists, and venues.</p></div>
+        </details>
+      </div>
     </div>
   </section>
+  <script>
+    (function(){document.querySelectorAll('.cc-faq[data-variant="accordion"]').forEach(function(f){f.querySelectorAll('.cc-faq__item').forEach(function(i){i.addEventListener('toggle',function(){if(!i.open)return;f.querySelectorAll('.cc-faq__item').forEach(function(s){if(s!==i)s.open=false;});});});});})();
+  </script>
 
-  <!-- FOOTER -->
+  <!-- 14. CTA-BANNER: sticky-bottom, dismissible -->
+  <section class="cc-section cc-banner" data-pattern="cta-banner" data-variant="sticky-bottom" data-key="sf-vibe-fest-apply">
+    <div class="container --wide cc-banner__inner">
+      <div class="cc-banner__copy">
+        <h2 class="cc-banner__heading voice-monument">Once a year, the room opens.</h2>
+        <p class="cc-banner__supporting voice-swiss">Applications, founding partnerships, and host-committee invitations are open.</p>
+      </div>
+      <a class="cc-banner__action voice-swiss --label" href="mailto:jordan@shiny.new">jordan@shiny.new<span aria-hidden="true">→</span></a>
+      <button class="cc-banner__dismiss" type="button" aria-label="Dismiss" hidden><span aria-hidden="true">×</span></button>
+    </div>
+  </section>
+  <script>
+    (function(){document.querySelectorAll('.cc-banner[data-variant="sticky-bottom"]').forEach(function(b){var k='cc-banner-dismissed-'+(b.dataset.key||'default');if(localStorage.getItem(k)==='1'){b.remove();return;}var d=b.querySelector('.cc-banner__dismiss');if(d){d.hidden=false;d.addEventListener('click',function(){localStorage.setItem(k,'1');b.setAttribute('data-dismissing','');setTimeout(function(){b.remove();},300);});}});})();
+  </script>
+
+  <!-- 15. FOOTER -->
   <footer class="cc-section cc-footer" data-pattern="footer" data-variant="editorial">
     <div class="container flex-between">
       <span class="cc-footer__copyright voice-swiss --label">SF VIBE FEST 2027 · The Future Gets a Neighborhood · Built by SHINY and Omega MegaCorp</span>
