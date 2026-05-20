@@ -354,3 +354,42 @@
 .cc-gallery[data-variant="mosaic"] .cc-gallery__item:nth-child(5n+4) { grid-column: span 2; }
 .cc-gallery[data-variant="mosaic"] .cc-img-placeholder { aspect-ratio: auto; height: 100%; }
 /* end-gallery */
+
+/* --- full-bleed --------------------------------------------- */
+.cc-bleed { padding-inline: 0; padding-block: 0; overflow: hidden; }
+.cc-bleed__content {
+  width: 100vw; min-height: 60vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.cc-bleed__content--type {
+  background: var(--color-bg);
+  padding: 0 4vw;
+}
+.cc-bleed__content--type [data-bleed-text] {
+  font-size: clamp(6rem, 22vw, 28rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: var(--color-fg);
+  word-break: break-word;
+  text-transform: uppercase;
+}
+.cc-bleed__content--image { min-height: 80vh; }
+.cc-bleed__content--image .cc-img-placeholder {
+  aspect-ratio: auto;
+  height: 80vh; width: 100%;
+  min-height: 0;
+}
+.cc-bleed__content--color {
+  background: var(--bleed-color, var(--color-discord));
+  color: var(--color-bg);
+  min-height: 70vh;
+}
+.cc-bleed__content--color [class*="voice-"] {
+  font-size: clamp(3rem, 10vw, 10rem);
+  line-height: 0.95;
+  text-align: center;
+  padding: 0 4vw;
+}
+/* end-full-bleed */
