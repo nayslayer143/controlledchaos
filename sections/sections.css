@@ -870,3 +870,72 @@ html {
   .cc-faq__marker { transition: none; }
 }
 /* end-faq */
+
+/* --- testimonial ------------------------------------------- */
+.cc-testimonial__items {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: 1fr;
+}
+.cc-testimonial[data-variant="grid"] .cc-testimonial__items {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 960px) {
+  .cc-testimonial[data-variant="grid"] .cc-testimonial__items { grid-template-columns: 1fr; }
+}
+.cc-quote-card {
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+  margin: 0;
+  min-width: 0;
+  transition: border-color var(--dur-swift);
+}
+.cc-quote-card:hover { border-color: var(--color-accent-2); }
+.cc-quote-card__quote { margin: 0 0 2rem; position: relative; padding-top: 1.5rem; }
+.cc-quote-card__quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.2em; left: -0.1em;
+  font-family: var(--font-monument);
+  font-size: 3em;
+  line-height: 1;
+  color: var(--color-accent-1);
+  font-style: normal;
+}
+.cc-quote-card__quote p {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--color-fg);
+}
+.cc-quote-card__author { display: flex; align-items: center; gap: 1rem; }
+.cc-quote-card__avatar {
+  width: 56px; height: 56px;
+  flex: 0 0 56px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%,
+      color-mix(in oklch, var(--color-accent-1) 30%, var(--color-surface)),
+      color-mix(in oklch, var(--color-accent-2) 15%, var(--color-surface)));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-monument);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-accent-2);
+  letter-spacing: -0.02em;
+}
+.cc-quote-card__meta { display: flex; flex-direction: column; gap: 0.125rem; }
+.cc-quote-card__name { font-size: var(--type-body); font-weight: 700; }
+.cc-quote-card__role {
+  font-size: var(--type-body-small);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.cc-testimonial[data-variant="featured"] .cc-testimonial__items { max-width: 60ch; margin: 0 auto; }
+.cc-testimonial[data-variant="featured"] .cc-quote-card__quote p {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.25;
+}
+/* end-testimonial */
