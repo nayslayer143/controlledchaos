@@ -1,0 +1,45 @@
+/* ============================================
+   SECTIONS — Reusable section partials
+   ============================================
+   Per-section rules are appended below as each
+   section partial ships. Base rhythm + reset only.
+
+   Load AFTER tokens/textures.css.
+   ============================================ */
+
+/* --- Base ---------------------------------------------------- */
+.cc-section {
+  position: relative;
+  padding-block: clamp(4rem, 8vh, 8rem);
+}
+
+.cc-section + .cc-section {
+  margin-top: 0;
+}
+
+/* Bleed sections push to viewport edges */
+.cc-section[data-pattern="full-bleed"],
+.cc-section[data-variant="bleed"] {
+  padding-inline: 0;
+}
+
+/* Placeholder for image slots */
+.cc-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-subtle);
+  color: var(--color-muted);
+  font-family: var(--font-swiss);
+  font-size: var(--type-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  aspect-ratio: 16 / 10;
+  min-height: 200px;
+}
+
+.cc-img-placeholder::before {
+  content: "[ image: " attr(data-slot) " ]";
+}
+
+/* Per-section rules — appended below by Tasks 4–15 */
