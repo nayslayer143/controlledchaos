@@ -4,6 +4,9 @@
 # Playwright MCP logs
 .playwright-mcp/
 
+# Visual brainstorm working dir
+.superpowers/
+
 # Reference images (not part of the system)
 *.jpeg
 *.png
