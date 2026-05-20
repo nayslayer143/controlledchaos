@@ -1,7 +1,7 @@
 ---
 name: controlledchaos
 description: Generate award-level static HTML pages using the Controlled Chaos design system — five aesthetic modes (Swiss Editorial, Brutalist Poster, Immersive Dark, Kinetic Type, Gallery Minimal), nine mood palettes, five typographic voices. Pure HTML + CSS custom properties, no JS framework. Use when the user asks for an Awwwards-style page, a controlled-chaos page, a landing page in a named mode, or names a mode/mood/voice from this system.
-triggers: controlled chaos, controlledchaos, awwwards-style page, awwwards page, swiss editorial page, brutalist poster page, immersive dark page, kinetic type page, gallery minimal page, design-system landing page, build a landing page in <mode>, style.json, style-driven page, compose using sections, add a hero, add a manifesto, add a stat-grid, add a quote, add a gallery, add a marquee, add a logo-wall, add a process, add a cta, add a footer, add a full-bleed, add a two-column
+triggers: controlled chaos, controlledchaos, awwwards-style page, awwwards page, swiss editorial page, brutalist poster page, immersive dark page, kinetic type page, gallery minimal page, design-system landing page, build a landing page in <mode>, style.json, style-driven page, compose using sections, add a hero, add a manifesto, add a stat-grid, add a quote, add a gallery, add a marquee, add a logo-wall, add a process, add a cta, add a footer, add a full-bleed, add a two-column, add a nav, add a feature grid, add a feature-grid, add a product showcase, add a product-showcase, add pricing, add an faq, add a faq, add a testimonial, add a signup form, add a signup-form, add integration logos, add an integration-logos, add a cta banner, add a cta-banner, add a comparison table, add a comparison-table, SMB tech landing page, SaaS landing page, out of the box landing page
 allowed-tools:
   - "Read"
   - "Write"
@@ -47,9 +47,11 @@ This skill supports two authoring paths. Pick based on what the user brings:
 | A `style.json` file (path or content) | **Style-Driven Authoring** — read `adapters/from-style-json.md` |
 | A request to compose with sections | Read `sections/README.md` first, then either workflow |
 
-Both paths converge on `templates/page-composed.html` and the 12-section library
+Both paths converge on `templates/page-composed.html` and the 22-section library
 in `sections/`. The three-decision recipe stays the default for prompts without
 a style guide.
+
+**SMB-tech baseline:** The default polish baseline is *Editorial-Generous* (Stripe / Anthropic / Cursor-marketing DNA). The interaction-states layer in `tokens/states.css` makes every interactive element feel shipping-grade out of the box. Section variants are tuned for this baseline.
 
 ---
 

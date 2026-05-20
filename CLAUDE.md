@@ -58,6 +58,14 @@ When building any page or component:
    `adapters/from-style-json.md` for the workflow. Style-guide source images
    are reference-only — never embed them as page imagery.
 
+8. **SMB-tech baseline is opt-in via class adoption.** The polish layer in
+   `tokens/states.css` activates universally when included in the `<link>`
+   chain. Section partials use the *Editorial-Generous* variant defaults;
+   choose other variants per brand context. The library now has 22 sections
+   (existing 12 + 10 SMB-tech additions: nav, feature-grid, product-showcase,
+   pricing, faq, testimonial, signup-form, integration-logos, cta-banner,
+   comparison-table).
+
 ## Design Principles (Non-Negotiable)
 - Type is the hero. If it works without color/images, you've won.
 - Tension is beauty. Near-symmetry over perfect symmetry.

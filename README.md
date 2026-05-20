@@ -256,7 +256,7 @@ All derived values (border-radius, spacing, animation speed) recalculate automat
 
 ## Section Library
 
-Twelve reusable section partials live in `sections/`. Each is mode-agnostic —
+Twenty-two reusable section partials live in `sections/`. Each is mode-agnostic —
 the token cascade handles per-mode look. See `sections/README.md` for the
 authoring contract and per-section placeholders.
 
@@ -274,6 +274,53 @@ authoring contract and per-section placeholders.
 | gallery | rigid, asymmetric, mosaic | gallery, immersive, kinetic |
 | full-bleed | type, image, color-field | immersive, brutalist, kinetic |
 | marquee | default, slow, vertical | kinetic, immersive, brutalist |
+| nav | default, centered, minimal | all |
+| feature-grid | default, wide, compact | swiss, gallery, immersive |
+| product-showcase | split, centered, callouts | gallery, immersive |
+| pricing | cards, table | swiss, gallery |
+| faq | accordion, static, numbered | swiss, gallery, immersive |
+| testimonial | card, grid, featured | all |
+| signup-form | inline, stacked, framed | all |
+| integration-logos | grid, inline, categorized | swiss, gallery |
+| cta-banner | inline, sticky-bottom, divider | all |
+| comparison-table | vs-2, vs-3, vs-many | swiss, gallery |
+
+## Polish Layer (`tokens/states.css`)
+
+Every interactive element gets shipping-grade craft out of the box.
+
+| Behavior | Element types | How |
+|---|---|---|
+| Hover lift | buttons, CTAs, nav-CTA | `transform: translateY(-2px)` at `var(--dur-swift)` |
+| Active press | buttons, CTAs | `transform: translateY(1px)` at `var(--dur-instant)` |
+| Focus ring | every focusable | `outline: 2px solid var(--color-discord)` via `:focus-visible` |
+| Disabled | buttons, inputs | `opacity: 0.4` + `cursor: not-allowed` + `pointer-events: none` |
+| Loading | buttons with `[aria-busy]` or `[data-loading]` | spinner pseudo-element |
+| Touch targets | buttons, links, inputs, nav links | `min-height: 44px` |
+| Input states | text/email/textarea/select | hover/focus/invalid/disabled |
+| Reduced motion | universal | `prefers-reduced-motion: reduce` zeros transforms + spinner |
+
+## Premium Motion
+
+Added to `sections.css`:
+
+- **Scroll-progress hairline** at top of viewport via `animation-timeline: scroll()` (Chrome/Edge; graceful absence on Firefox stable).
+- **Smooth-scroll with sticky-nav offset** via `scroll-padding-top: calc(var(--nav-height, 0) + 1rem)`.
+- **Image-placeholder upgrade** — `cc-img-placeholder` now uses radial-gradient + linear-gradient + SVG grain overlay + bottom-left attr() label.
+
+All halt under `prefers-reduced-motion`.
+
+## Template Scaffolding
+
+Deploy-ready defaults in `templates/`:
+
+| File | Purpose |
+|---|---|
+| `page-composed.html` | Full SEO/OG/Twitter/JSON-LD `<head>` with Mustache placeholders for `{{seo.*}}` and `{{org.*}}` |
+| `404.html` | Style-driven 404 — hero + cta + footer, same `<link>` chain as the main page |
+| `privacy.html` | 8-section privacy-policy scaffold (lorem-replaceable) |
+| `terms.html` | 12-section terms-of-service scaffold |
+| `meta.partial.html` | Standalone copy-pasteable `<head>` meta stack for non-CC pages |
 
 ## Style-Guide Adapter (`style.json`)
 
