@@ -65,19 +65,43 @@
       --texture-grain-duration: calc(8s * var(--motion-scale, 1));
     }
 
-    /* SF VIBE FEST page-specific brand tuning */
+    /* SF VIBE FEST page-specific brand tuning
+       --------------------------------------
+       Universal: brand voice mandates sentence case for headings
+       (the deck and v2 style guide are explicit). voice-monument and
+       voice-monument.--display both default to text-transform:uppercase
+       in tokens/typography.css, so we override here for every heading
+       on the page. */
+    .cc-hero__heading,
+    .cc-manifesto__heading,
+    .cc-stat-grid__heading,
+    .cc-cta__heading,
+    .cc-process__heading,
+    .cc-process__step-title,
+    .cc-two-col__heading,
+    .cc-bleed__content--type [data-bleed-text] {
+      text-transform: none;
+    }
+
     body {
       font-family: var(--font-swiss);
       background: var(--color-bg);
       color: var(--color-fg);
       margin: 0;
+      /* Prevent horizontal overflow from oversized italic letters */
+      overflow-x: hidden;
     }
-    /* Hero heading: heavy Playfair italic — Fillmore-poster energy */
+
+    /* Hero — heavy Playfair italic, Fillmore-poster energy.
+       Slightly looser line-height so the descenders of g/y don't crowd
+       the subhead below. */
+    .cc-hero { padding-block: clamp(4rem, 14vh, 11rem); }
     .cc-hero__heading {
       font-weight: 900;
       font-style: italic;
       letter-spacing: -0.03em;
-      text-transform: none;
+      line-height: 1.02;
+      margin-bottom: 2.5rem;
     }
     .cc-hero[data-variant="editorial"] .cc-hero__heading::after {
       content: ".";
@@ -88,75 +112,122 @@
       font-family: var(--font-brutalist);
       letter-spacing: 0.18em;
     }
-    /* Manifesto: editorial italic for the heading — chapbook energy */
+
+    /* Manifesto — chapbook italic */
     .cc-manifesto__heading {
       font-family: var(--font-editorial);
       font-style: italic;
       font-weight: 400;
       max-width: 26ch;
       letter-spacing: -0.01em;
+      line-height: 1.05;
     }
-    /* Stat-grid: massive Playfair numbers with copper labels */
-    .cc-stat__num {
-      font-family: var(--font-monument);
-      font-weight: 900;
-      color: var(--color-fg);
-      letter-spacing: -0.05em;
-    }
-    .cc-stat__label {
-      color: var(--color-accent-2);
-      font-family: var(--font-brutalist);
-    }
+
+    /* Stat-grid — Playfair numbers but capped to display size, NOT
+       the 192px massive scale (which was for the hero only). Grid
+       items get min-width:0 so they shrink to fit narrow viewports
+       instead of forcing horizontal overflow. */
     .cc-stat-grid__heading {
       font-family: var(--font-editorial);
       font-style: italic;
       font-weight: 400;
+      line-height: 1.05;
+      max-width: 22ch;
     }
-    /* Quote: large Cormorant italic, electric blue gutter — trust signal */
+    .cc-stat-grid__items {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .cc-stat { min-width: 0; }
+    .cc-stat__num {
+      font-family: var(--font-monument);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--color-fg);
+      letter-spacing: -0.04em;
+      /* Was clamp(56px, 8vw+1rem, 192px) from --massive — way too big
+         for a stat card. Use the --display range instead: 40-96px. */
+      font-size: clamp(2.75rem, 5vw + 0.5rem, 5.5rem);
+      line-height: 0.95;
+    }
+    .cc-stat__label {
+      color: var(--color-accent-2);
+      font-family: var(--font-brutalist);
+      font-size: var(--type-caption);
+    }
+    .cc-stat__caption { max-width: 32ch; }
+
+    /* Quote — large Cormorant italic, electric blue gutter (trust signal) */
     .cc-quote__text {
       font-family: var(--font-editorial);
       font-style: italic;
       font-weight: 400;
       letter-spacing: -0.005em;
+      max-width: 22ch;
     }
     .cc-quote[data-variant="gutter"] .cc-quote__text {
       border-left-color: var(--color-discord);
       border-left-width: 4px;
     }
-    /* Process timeline: Playfair-italic step titles, copper numeral */
+
+    /* Process — universal: each step IS position:relative + the
+       grid template needs to differ per variant. Default variant uses
+       auto 1fr (number column + content column); timeline variant uses
+       a single 1fr column with the number absolute-positioned on the
+       gutter line. Without this override the body text gets crushed
+       into a sliver. */
     .cc-process__heading,
     .cc-process__step-title {
       font-family: var(--font-monument);
     }
-    .cc-process__step-title { font-weight: 700; font-style: italic; }
+    .cc-process__step-title { font-weight: 700; font-style: italic; line-height: 1.1; margin-bottom: 0.5rem; }
     .cc-process__step::before {
       color: var(--color-accent-1);
       font-family: var(--font-monument);
+      font-style: italic;
     }
-    /* Two-column dialogue: heavy serif headings, copper "Before" / orange "After" */
+    .cc-process[data-variant="timeline"] .cc-process__step {
+      grid-template-columns: 1fr;
+      gap: 0.5rem 0;
+      padding-block: 0.5rem;
+    }
+    .cc-process[data-variant="timeline"] .cc-process__step::before {
+      position: absolute;
+      left: -3.5rem;
+      top: 0.25rem;
+      font-size: var(--type-headline);
+      line-height: 1;
+    }
+    .cc-process[data-variant="timeline"] .cc-process__step-body {
+      max-width: 56ch;
+    }
+
+    /* Two-column — serif italic headings, copper "Before" / orange "After" */
     .cc-two-col__heading {
       font-family: var(--font-monument);
       font-weight: 700;
       font-style: italic;
+      line-height: 1.1;
     }
-    /* Full-bleed: massive Playfair italic across the page */
+
+    /* Full-bleed — massive Playfair italic across the page */
     .cc-bleed__content--type [data-bleed-text] {
       font-family: var(--font-monument);
       font-weight: 900;
       font-style: italic;
-      text-transform: none;
       letter-spacing: -0.04em;
       color: var(--color-fg);
-      font-size: clamp(3rem, 11vw, 14rem);
+      font-size: clamp(2.5rem, 9vw, 11rem);
       line-height: 1.0;
+      max-width: 14ch;
     }
-    /* CTA: editorial heading, copper border CTA */
+
+    /* CTA — editorial heading, orange-border action button */
     .cc-cta__heading {
       font-family: var(--font-monument);
       font-style: italic;
       font-weight: 900;
       letter-spacing: -0.02em;
-      text-transform: none;
+      line-height: 1.05;
     }
     .cc-cta__action {
       border-color: var(--color-accent-1);
@@ -167,7 +238,8 @@
       background: var(--color-accent-1);
       color: var(--color-bg);
     }
-    /* Footer: editorial italic, lowercase except brand */
+
+    /* Footer — editorial italic, lowercase except brand */
     .cc-footer__copyright {
       font-family: var(--font-editorial);
       font-style: italic;
@@ -183,17 +255,45 @@
       border-top: 1px solid var(--color-border);
     }
 
-    /* International orange highlight for inline emphasis */
+    /* Inline emphasis colors */
     em.io { color: var(--color-accent-1); font-style: italic; }
-    /* Electric blue for signal/data emphasis */
     em.eb { color: var(--color-discord); font-style: normal; font-family: var(--font-brutalist); }
+
+    /* -----------------------------------------------------------
+       MOTION — apply CC's existing motion vocabulary.
+       Reveal-on-scroll + stagger; opacity starts at 0, transforms
+       in via the IntersectionObserver below. Respects reduced motion
+       through tokens/motion.css's @media block. */
+    .cc-section .container > * { /* nothing — sections own their reveal */ }
+
+    /* -----------------------------------------------------------
+       RESPONSIVE — under 720px collapse the two-column dialogue +
+       relax process timeline gutters + breathe the stat-grid. */
+    @media (max-width: 720px) {
+      .cc-hero__heading { font-size: clamp(2.5rem, 11vw, 4rem); }
+      .cc-manifesto__heading { font-size: clamp(2rem, 8vw, 3rem); }
+      .cc-stat-grid__heading,
+      .cc-process__heading,
+      .cc-cta__heading { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+      .cc-quote__text { font-size: clamp(1.5rem, 6vw, 2.25rem); max-width: 100%; }
+      .cc-stat-grid__items { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .cc-stat__num { font-size: clamp(2rem, 9vw, 3rem); }
+      .cc-process[data-variant="timeline"] .cc-process__steps { padding-left: 2.5rem; }
+      .cc-process[data-variant="timeline"] .cc-process__step::before { left: -2.5rem; font-size: 1.25rem; }
+      .cc-bleed__content--type [data-bleed-text] { font-size: clamp(2rem, 9vw, 5rem); }
+      .cc-cta__action { font-size: var(--type-caption); }
+    }
+    @media (max-width: 480px) {
+      .cc-stat-grid__items { grid-template-columns: 1fr; }
+      .cc-footer .container { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
   </style>
 </head>
 <body>
 
   <!-- HERO: editorial variant — the foundational promise -->
   <section class="cc-section cc-hero" data-pattern="hero" data-variant="editorial">
-    <div class="container --regular flow">
+    <div class="container --regular flow motion-reveal">
       <span class="cc-hero__eyebrow voice-swiss --label">SF VIBE FEST · OCT 25–31, 2027 · SAN FRANCISCO</span>
       <h1 class="cc-hero__heading voice-monument --massive">The future gets a neighborhood</h1>
       <p class="cc-hero__subhead voice-swiss">A seven-day citywide convergence of capital, code, culture, music, art, and civic imagination. Anchored at Moscone. Distributed across museums, waterfronts, civic plazas, cultural institutions, startup spaces, and seven neighborhood block parties.</p>
@@ -202,9 +302,9 @@
 
   <!-- MANIFESTO: the opening myth -->
   <section class="cc-section cc-manifesto" data-pattern="manifesto" data-variant="default">
-    <div class="container --regular flow">
+    <div class="container --regular flow motion-reveal">
       <h2 class="cc-manifesto__heading voice-editorial --display">San Francisco has always been where the future comes to get a body.</h2>
-      <div class="cc-manifesto__body">
+      <div class="cc-manifesto__body motion-stagger">
         <p class="voice-swiss">Before the future becomes normal, it comes here strange. Before it becomes infrastructure, it comes here as a scene. Before it becomes an industry, it comes here as music, code, protest, poetry, sex, food, risk, argument, light, fog, and people brave enough to live a little ahead of schedule.</p>
         <p class="voice-swiss">The Beats came here to rewrite consciousness. The psychedelic generation came here to turn music into a portal. Queer liberation changed the moral vocabulary of the world from these streets. Punk, rave, Burning Man, <em>Wired</em>, open source, biotech, mobile, social, climate, crypto, and AI all passed through this same charged geography.</p>
         <p class="voice-swiss">Now the next wave is here. Artificial intelligence is not just another technology cycle — it is the new nervous system of capital, culture, media, labor, health, education, cities, and power. And once again, <em class="io">San Francisco is where the wire is thickest.</em></p>
@@ -214,26 +314,26 @@
 
   <!-- STAT-GRID: the proof cards -->
   <section class="cc-section cc-stat-grid" data-pattern="stat-grid" data-variant="default">
-    <div class="container --wide flow">
+    <div class="container --wide flow motion-reveal">
       <h2 class="cc-stat-grid__heading voice-monument --display">Culture is everywhere. Decision gravity is not.</h2>
-      <div class="cc-stat-grid__items">
+      <div class="cc-stat-grid__items motion-stagger">
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$211B</span>
+          <span class="cc-stat__num voice-monument">$211B</span>
           <span class="cc-stat__label voice-swiss --label">global AI VC, 2025</span>
           <span class="cc-stat__caption voice-swiss">85% surge year-over-year. One of every two VC dollars now goes to AI.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">60%</span>
+          <span class="cc-stat__num voice-monument">60%</span>
           <span class="cc-stat__label voice-swiss --label">captured by the Bay Area</span>
           <span class="cc-stat__caption voice-swiss">$126B of the global pool, on 22% of total deal share.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$113B</span>
+          <span class="cc-stat__num voice-monument">$113B</span>
           <span class="cc-stat__label voice-swiss --label">to 92 companies</span>
           <span class="cc-stat__caption voice-swiss">The eye of the needle. The narrow window the future passes through.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$1.7B</span>
+          <span class="cc-stat__num voice-monument">$1.7B</span>
           <span class="cc-stat__label voice-swiss --label">SF nonprofit arts output</span>
           <span class="cc-stat__caption voice-swiss">36,828 full-time-equivalent jobs. Culture is economic infrastructure.</span>
         </div>
@@ -243,7 +343,7 @@
 
   <!-- QUOTE: gutter variant — the thesis line as pull quote, electric-blue gutter -->
   <section class="cc-section cc-quote" data-pattern="quote" data-variant="gutter">
-    <div class="container --regular">
+    <div class="container --regular motion-reveal">
       <blockquote class="cc-quote__body">
         <p class="cc-quote__text voice-editorial --display">If you aren't in the room, you are 500ms behind the future.</p>
         <cite class="cc-quote__attribution voice-swiss --label">— The Eye of the Needle thesis · SF VIBE FEST 2027</cite>
@@ -253,7 +353,7 @@
 
   <!-- FULL-BLEED: the brand promise -->
   <section class="cc-section cc-bleed" data-pattern="full-bleed" data-variant="type">
-    <div class="cc-bleed__content cc-bleed__content--type">
+    <div class="cc-bleed__content cc-bleed__content--type motion-reveal">
       <span class="voice-monument" data-bleed-text>The future does not need another convention. It needs a place to become human.</span>
     </div>
   </section>
@@ -261,7 +361,7 @@
   <!-- TWO-COLUMN: the public sees the festival / the business is the room -->
   <section class="cc-section cc-two-col" data-pattern="two-column" data-variant="dialogue">
     <div class="container --wide">
-      <div class="cc-two-col__grid">
+      <div class="cc-two-col__grid motion-stagger">
         <div class="cc-two-col__col">
           <h3 class="cc-two-col__heading voice-monument">The public sees the festival.</h3>
           <p class="cc-two-col__body voice-swiss">Seven neighborhood block parties. Museum nights. Public art. Live music. Markets. Free where it counts. Real where it matters. The cultural electricity of the most magnetic week San Francisco has produced in a decade — designed to be walked, not gated.</p>
@@ -276,9 +376,9 @@
 
   <!-- PROCESS: the 7-night arc, timeline variant -->
   <section class="cc-section cc-process" data-pattern="process" data-variant="timeline">
-    <div class="container --regular flow">
+    <div class="container --regular flow motion-reveal">
       <h2 class="cc-process__heading voice-editorial --display">Seven nights. Seven neighborhoods. One civic pulse.</h2>
-      <ol class="cc-process__steps">
+      <ol class="cc-process__steps motion-stagger">
         <li class="cc-process__step">
           <h3 class="cc-process__step-title voice-monument">Mon · SoMa / Yerba Buena</h3>
           <p class="cc-process__step-body voice-swiss">The city of builders. Opening night. The room sets itself.</p>
@@ -313,26 +413,26 @@
 
   <!-- STAT-GRID #2: the equation of scale -->
   <section class="cc-section cc-stat-grid" data-pattern="stat-grid" data-variant="default">
-    <div class="container --wide flow">
+    <div class="container --wide flow motion-reveal">
       <h2 class="cc-stat-grid__heading voice-monument --display">Premium access funds public wonder.</h2>
-      <div class="cc-stat-grid__items">
+      <div class="cc-stat-grid__items motion-stagger">
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$59M</span>
+          <span class="cc-stat__num voice-monument">$59M</span>
           <span class="cc-stat__label voice-swiss --label">base-case revenue</span>
           <span class="cc-stat__caption voice-swiss">Capital Summit + sponsor anchors + premium passes. Spectacle is public; economics are disciplined.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$400M+</span>
+          <span class="cc-stat__num voice-monument">$400M+</span>
           <span class="cc-stat__label voice-swiss --label">civic impact target</span>
           <span class="cc-stat__caption voice-swiss">Scaled from SXSW's $380.9M benchmark. Year-one realistic.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">$1B+</span>
+          <span class="cc-stat__num voice-monument">$1B+</span>
           <span class="cc-stat__label voice-swiss --label">aspirational impact</span>
           <span class="cc-stat__caption voice-swiss">Hotel nights, vendor revenue, artist compensation, neighborhood grants, media valuation compounded.</span>
         </div>
         <div class="cc-stat">
-          <span class="cc-stat__num voice-monument --massive">52k</span>
+          <span class="cc-stat__num voice-monument">52k</span>
           <span class="cc-stat__label voice-swiss --label">hotel-night target</span>
           <span class="cc-stat__caption voice-swiss">Direct hotel tax flows back to the Live Music Fund and neighborhood culture.</span>
         </div>
@@ -342,7 +442,7 @@
 
   <!-- QUOTE #2: sponsors as civic architects -->
   <section class="cc-section cc-quote" data-pattern="quote" data-variant="gutter">
-    <div class="container --regular">
+    <div class="container --regular motion-reveal">
       <blockquote class="cc-quote__body">
         <p class="cc-quote__text voice-editorial --display">The best sponsors will not ask, "Where is my logo?" They will ask, "What part of the city did we help bring alive?"</p>
         <cite class="cc-quote__attribution voice-swiss --label">— Sponsors as civic architects · v2 Super Deck</cite>
@@ -352,7 +452,7 @@
 
   <!-- CTA: the invitation -->
   <section class="cc-section cc-cta" data-pattern="cta" data-variant="discord">
-    <div class="container --regular flow">
+    <div class="container --regular flow motion-reveal">
       <h2 class="cc-cta__heading voice-monument --display">Once a year, the room opens.</h2>
       <p class="cc-cta__supporting voice-swiss">You do not have to live in San Francisco. But if you are shaping the future — funding it, building it, regulating it, designing it, performing it, feeding it, questioning it, or trying to make it more human — once a year, you need to be here. Anchor sponsorships, founding partnerships, host-committee invitations, and allocator applications are open.</p>
         <a class="cc-cta__action voice-swiss --label" href="mailto:jordan@shiny.new">
@@ -375,5 +475,22 @@
     </div>
   </footer>
 
+  <!-- IntersectionObserver: toggles .--visible on motion-reveal / motion-stagger
+       elements as they enter the viewport. Mirrors CC's existing motion model. -->
+  <script>
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('--visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+      document.querySelectorAll('.motion-reveal, .motion-stagger').forEach(function(el) {
+        io.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>
