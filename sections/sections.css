@@ -23,23 +23,41 @@
   padding-inline: 0;
 }
 
-/* Placeholder for image slots */
+/* Placeholder for image slots — gradient + grain treatment.
+   Reads as intentional empty state, not TODO image. */
 .cc-img-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-subtle);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center,
+      color-mix(in oklch, var(--color-fg) 8%, transparent),
+      transparent 70%),
+    linear-gradient(135deg,
+      color-mix(in oklch, var(--color-accent-1) 6%, var(--color-surface)),
+      color-mix(in oklch, var(--color-accent-2) 4%, var(--color-surface)));
   color: var(--color-muted);
   font-family: var(--font-swiss);
   font-size: var(--type-caption);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   aspect-ratio: 16 / 10;
   min-height: 200px;
 }
-
 .cc-img-placeholder::before {
-  content: "[ image: " attr(data-slot) " ]";
+  /* Grain overlay (inline SVG noise) */
+  content: ""; position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px;
+}
+.cc-img-placeholder::after {
+  content: "[ " attr(data-slot) " ]";
+  position: absolute;
+  inset: auto auto 1rem 1rem;
+  font-size: var(--type-caption);
+  color: var(--color-muted);
 }
 
 /* Per-section rules — appended below by Tasks 4–15 */
@@ -421,3 +439,44 @@
   .cc-marquee__inner, .cc-marquee-section[data-variant="vertical"] .cc-marquee__inner { animation: none; }
 }
 /* end-marquee */
+
+/* ============================================
+   PREMIUM MOTION — Universal scroll polish
+   ============================================
+   Scroll-progress hairline (animation-timeline scroll, Baseline 2024
+   Chrome/Edge; @supports gracefully omits in Firefox stable).
+   Smooth-scroll with sticky-nav offset.
+   Both respect prefers-reduced-motion.
+   ============================================ */
+
+/* Scroll-progress hairline at the top of viewport */
+@supports (animation-timeline: scroll()) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-accent-1);
+    z-index: 1000;
+    transform-origin: left;
+    animation: cc-scroll-progress linear both;
+    animation-timeline: scroll();
+    pointer-events: none;
+  }
+  @keyframes cc-scroll-progress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* Smooth-scroll honoring sticky-nav offset */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height, 0px) + 1rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { display: none; }
+  html { scroll-behavior: auto; }
+}
+/* end-premium-motion */
