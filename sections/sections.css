@@ -100,3 +100,34 @@
   color: var(--color-discord);
   letter-spacing: 0.1em;
 }
+
+/* --- quote -------------------------------------------------- */
+.cc-quote__body { margin: 0; }
+.cc-quote__text {
+  margin: 0 0 2rem;
+  max-width: 28ch;
+  line-height: 1.1;
+  font-style: italic;
+  position: relative;
+}
+.cc-quote__text::before {
+  content: "\201C";
+  position: absolute; left: -0.5em; top: -0.1em;
+  color: var(--color-discord);
+  font-size: 1.4em;
+  font-style: normal;
+}
+.cc-quote__attribution { color: var(--color-muted); display: block; }
+.cc-quote__source { display: block; margin-top: 0.25em; color: var(--color-accent-2); font-style: italic; }
+.cc-quote[data-variant="monument"] .cc-quote__text {
+  font-family: var(--font-monument);
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: var(--type-massive);
+  letter-spacing: -0.02em;
+}
+.cc-quote[data-variant="gutter"] .cc-quote__text {
+  padding-left: 4rem;
+  border-left: 4px solid var(--color-discord);
+}
+.cc-quote[data-variant="gutter"] .cc-quote__text::before { display: none; }
