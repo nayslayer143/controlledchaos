@@ -939,3 +939,44 @@ html {
   line-height: 1.25;
 }
 /* end-testimonial */
+
+/* --- signup-form ------------------------------------------- */
+.cc-signup__heading { margin: 0 0 1rem; max-width: 22ch; line-height: 1.1; }
+.cc-signup__supporting { max-width: 50ch; color: var(--color-accent-2); margin-bottom: 1.5rem; }
+.cc-signup__form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+  align-items: stretch;
+}
+.cc-signup__input { flex: 1; }
+.cc-signup__button {
+  padding: 0 1.5rem;
+  border: 1px solid var(--color-fg);
+  background: var(--color-fg);
+  color: var(--color-bg);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cc-signup__button:hover { background: var(--color-accent-1); border-color: var(--color-accent-1); }
+.cc-signup__help {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: var(--type-body-small);
+}
+.cc-signup[data-variant="stacked"] .cc-signup__form { flex-direction: column; max-width: 360px; }
+.cc-signup[data-variant="stacked"] .cc-signup__button { padding: 0.875rem 1.5rem; }
+.cc-signup[data-variant="framed"] > .container {
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  max-width: 56ch;
+}
+@media (max-width: 600px) {
+  .cc-signup__form { flex-direction: column; }
+  .cc-signup__button { padding: 0.875rem 1.5rem; }
+}
+/* end-signup-form */
