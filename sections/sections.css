@@ -43,3 +43,32 @@
 }
 
 /* Per-section rules — appended below by Tasks 4–15 */
+
+/* --- hero --------------------------------------------------- */
+.cc-hero {
+  padding-block: clamp(6rem, 18vh, 14rem);
+}
+.cc-hero__eyebrow {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--color-discord);
+}
+.cc-hero__heading {
+  margin: 0 0 1.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.cc-hero__subhead {
+  max-width: 50ch;
+  color: var(--color-accent-2);
+}
+.cc-hero[data-variant="editorial"] .cc-hero__heading {
+  font-family: var(--font-editorial);
+  letter-spacing: -0.01em;
+}
+.cc-hero[data-variant="editorial"] .cc-hero__heading::after {
+  content: ".";
+  color: var(--color-discord);
+}
+.cc-hero[data-variant="bleed"] .container { max-width: none; padding-inline: 4vw; }
+.cc-hero[data-variant="bleed"] .cc-hero__heading { font-size: clamp(4rem, 14vw, 14rem); }
