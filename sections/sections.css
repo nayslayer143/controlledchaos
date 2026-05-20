@@ -156,3 +156,63 @@
   text-transform: uppercase; letter-spacing: 0.15em;
   color: var(--color-discord);
 }
+/* end-two-column */
+
+/* --- cta ---------------------------------------------------- */
+.cc-cta { text-align: left; }
+.cc-cta__heading { margin: 0 0 1rem; max-width: 22ch; }
+.cc-cta__supporting { max-width: 50ch; color: var(--color-accent-2); margin-bottom: 2rem; }
+.cc-cta__action {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--color-fg);
+  color: var(--color-fg); text-decoration: none;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  transition: transform var(--dur-swift) var(--ease-spring), background var(--dur-swift);
+}
+.cc-cta__action:hover { transform: translateY(-2px); background: var(--color-fg); color: var(--color-bg); }
+.cc-cta__arrow { transition: transform var(--dur-swift) var(--ease-spring); }
+.cc-cta__action:hover .cc-cta__arrow { transform: translateX(4px); }
+.cc-cta[data-variant="discord"] .cc-cta__action {
+  border-color: var(--color-discord); color: var(--color-discord);
+}
+.cc-cta[data-variant="discord"] .cc-cta__action:hover { background: var(--color-discord); color: var(--color-bg); }
+.cc-cta[data-variant="monument"] .cc-cta__heading {
+  font-size: var(--type-massive); line-height: 0.9;
+}
+/* end-cta */
+
+/* --- stat-grid ---------------------------------------------- */
+.cc-stat-grid__heading { margin: 0 0 3rem; max-width: 28ch; }
+.cc-stat-grid__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+}
+.cc-stat { display: flex; flex-direction: column; gap: 0.5rem; }
+.cc-stat__num {
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--color-fg);
+}
+.cc-stat__label {
+  color: var(--color-discord);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.cc-stat__caption { color: var(--color-muted); font-size: var(--type-body-small); max-width: 30ch; }
+.cc-stat-grid[data-variant="bleed"] .container { max-width: none; padding-inline: 0; }
+.cc-stat-grid[data-variant="bleed"] .cc-stat-grid__items { padding-inline: 4vw; border-top: 1px solid var(--color-border); padding-top: 2rem; }
+.cc-stat-grid[data-variant="vertical"] .cc-stat-grid__items {
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--color-border);
+}
+.cc-stat-grid[data-variant="vertical"] .cc-stat {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+/* end-stat-grid */
