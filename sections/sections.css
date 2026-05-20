@@ -72,3 +72,31 @@
 }
 .cc-hero[data-variant="bleed"] .container { max-width: none; padding-inline: 4vw; }
 .cc-hero[data-variant="bleed"] .cc-hero__heading { font-size: clamp(4rem, 14vw, 14rem); }
+
+/* --- manifesto ---------------------------------------------- */
+.cc-manifesto__heading {
+  max-width: 22ch;
+  margin: 0 0 3rem;
+}
+.cc-manifesto__body {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 60ch;
+  font-size: var(--type-body);
+}
+.cc-manifesto[data-variant="numbered"] .cc-manifesto__body {
+  counter-reset: cc-manifesto-p;
+}
+.cc-manifesto[data-variant="numbered"] .cc-manifesto__body > p {
+  counter-increment: cc-manifesto-p;
+  padding-left: 4rem;
+  position: relative;
+}
+.cc-manifesto[data-variant="numbered"] .cc-manifesto__body > p::before {
+  content: counter(cc-manifesto-p, decimal-leading-zero);
+  position: absolute; left: 0; top: 0;
+  font-family: var(--font-brutalist);
+  font-size: var(--type-caption);
+  color: var(--color-discord);
+  letter-spacing: 0.1em;
+}
