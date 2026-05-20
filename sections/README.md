@@ -28,6 +28,20 @@ Every partial:
 | [gallery](gallery.html) | rigid, asymmetric, mosaic | heading, items[] (slot_name, optional caption) | gallery, immersive, kinetic | brutalist |
 | [full-bleed](full-bleed.html) | type, image, color-field | type → content; image → slot_name; color-field → content, optional --bleed-color | immersive, brutalist, kinetic | — |
 | [marquee](marquee.html) | default, slow, vertical | items[] (text) | kinetic, immersive, brutalist | gallery |
+| [nav](nav.html) | default, centered, minimal | brand, links[] (label, href), cta_text, cta_href | all | — |
+| [feature-grid](feature-grid.html) | default, wide, compact | heading, eyebrow?, features[] (icon, title, body) | swiss, gallery, immersive | brutalist, kinetic |
+| [product-showcase](product-showcase.html) | split, centered, callouts | heading, body, image_slot, callouts[] for callouts variant | gallery, immersive | brutalist |
+| [pricing](pricing.html) | cards, table | heading, eyebrow?, tiers[] (name, price, period, features[], cta_text, cta_href, recommended?) | swiss, gallery | brutalist |
+| [faq](faq.html) | accordion, static, numbered | heading, items[] (question, answer) | swiss, gallery, immersive | kinetic |
+| [testimonial](testimonial.html) | card, grid, featured | testimonials[] (quote, author, role, company, monogram?) | all | — |
+| [signup-form](signup-form.html) | inline, stacked, framed | heading?, supporting?, placeholder_text, button_text, action_href | all | brutalist |
+| [integration-logos](integration-logos.html) | grid, inline, categorized | heading, logos[] (label, href?, category?) | swiss, gallery | kinetic |
+| [cta-banner](cta-banner.html) | inline, sticky-bottom, divider | heading, supporting?, action_text, action_href, dismissible?, banner_key? | all | — |
+| [comparison-table](comparison-table.html) | vs-2, vs-3, vs-many | heading, eyebrow?, columns[] (name, is_you), rows[] (feature, values[]) | swiss, gallery | brutalist, kinetic |
+
+## Icons
+
+`feature-grid` and `pricing` use inline SVG icons. Reference set (13 stroke-based icons) lives in [icons.md](icons.md). The agent picks the icon that matches the feature meaning, or authors a new one in the same style and adds it to the reference file.
 
 ## Image policy
 
