@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="signal" data-forces="immersive">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title</title>
+
+  <!-- Fonts (drop voices you don't use to save bytes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tokens (order matters: textures + sections last) -->
+  <link rel="stylesheet" href="../tokens/layout.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/color.css">
+  <link rel="stylesheet" href="../tokens/motion.css">
+  <link rel="stylesheet" href="../tokens/forces.css">
+  <link rel="stylesheet" href="../tokens/textures.css">
+  <link rel="stylesheet" href="../sections/sections.css">
+
+  <!-- STYLE-GUIDE-OVERRIDES
+       When driven from style.json, the adapter emits a <style> block
+       here containing the custom mood scope, force overrides, voice
+       font-family overrides, and motion-scale. Leave empty for
+       three-decision (no style.json) authoring. -->
+  <style id="style-overrides"></style>
+
+  <style>
+    body {
+      font-family: var(--font-swiss);
+      background: var(--color-bg);
+      color: var(--color-fg);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COMPOSE SECTIONS FROM sections/.
+       Read sections/README.md for the catalog.
+       Each section partial uses Mustache {{...}} placeholders the
+       agent fills via string substitution.
+
+       Recommended ordering for a typical page:
+         hero → manifesto → stat-grid → quote → cta → footer
+
+       For pages composed from style.json:
+         Honor dos[] / donts[] when picking sections + variants. -->
+
+  <!-- SECTION: HERO -->
+  <!-- replace with content of sections/hero.html, fill placeholders -->
+
+  <!-- SECTION: BODY -->
+  <!-- one or more of: manifesto / stat-grid / quote / two-column /
+       process / gallery / full-bleed / marquee / logo-wall -->
+
+  <!-- SECTION: CTA -->
+  <!-- replace with content of sections/cta.html -->
+
+  <!-- SECTION: FOOTER -->
+  <!-- replace with content of sections/footer.html -->
+
+</body>
+</html>
