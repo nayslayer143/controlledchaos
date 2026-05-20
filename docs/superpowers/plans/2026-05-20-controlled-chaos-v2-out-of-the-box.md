@@ -17,7 +17,7 @@
 This plan is split into parts. Read in order:
 
 1. **This file** — file structure, task list, verification, execution handoff
-2. **[part-1-foundation.md](2026-05-20-part-1-foundation.md)** — Tasks 1–3: `tokens/states.css`, image-placeholder + premium motion in `sections.css`, `templates/page-composed.html` head upgrade
+2. **[v2-part-1-foundation.md](2026-05-20-v2-part-1-foundation.md)** — Tasks 1–3: `tokens/states.css`, image-placeholder + premium motion in `sections.css`, `templates/page-composed.html` head upgrade
 3. **[part-2-templates.md](2026-05-20-part-2-templates.md)** — Tasks 4–7: `meta.partial.html`, `404.html`, `privacy.html`, `terms.html`
 4. **[part-3-sections-conversion.md](2026-05-20-part-3-sections-conversion.md)** — Tasks 8–11: `nav`, `feature-grid`, `product-showcase`, `pricing` (the conversion-critical four)
 5. **[part-4-sections-trust.md](2026-05-20-part-4-sections-trust.md)** — Tasks 12–15: `faq`, `testimonial`, `signup-form`, `integration-logos` (the social-proof + trust four)
