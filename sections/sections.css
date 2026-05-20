@@ -276,3 +276,46 @@
 }
 .cc-footer[data-variant="bleed"] .container { max-width: none; padding-inline: 4vw; }
 /* end-footer */
+
+/* --- logo-wall ---------------------------------------------- */
+.cc-logo-wall__heading {
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--color-muted); margin: 0 0 2rem;
+  text-align: center;
+}
+.cc-logo-wall__items {
+  list-style: none; padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2rem 3rem;
+  align-items: center;
+  justify-items: center;
+}
+.cc-logo-wall__item a {
+  font-family: var(--font-monument);
+  font-size: var(--type-headline);
+  text-transform: uppercase; letter-spacing: -0.02em;
+  color: var(--color-fg); text-decoration: none;
+  opacity: 0.6;
+  transition: opacity var(--dur-swift);
+}
+.cc-logo-wall__item a:hover { opacity: 1; }
+.cc-logo-wall[data-variant="marquee"] .cc-logo-wall__items {
+  display: flex; gap: 4rem;
+  animation: marquee-scroll 30s linear infinite;
+  width: max-content;
+}
+.cc-logo-wall[data-variant="marquee"] { overflow: hidden; }
+.cc-logo-wall[data-variant="monolith"] .cc-logo-wall__items {
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--color-border);
+}
+.cc-logo-wall[data-variant="monolith"] .cc-logo-wall__item {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  justify-self: stretch;
+  text-align: center;
+}
+.cc-logo-wall[data-variant="monolith"] .cc-logo-wall__item a { font-size: var(--type-display); }
+/* end-logo-wall */
