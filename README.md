@@ -254,6 +254,59 @@ Override force values directly in CSS for custom compositions:
 
 All derived values (border-radius, spacing, animation speed) recalculate automatically.
 
+## Section Library
+
+Twelve reusable section partials live in `sections/`. Each is mode-agnostic —
+the token cascade handles per-mode look. See `sections/README.md` for the
+authoring contract and per-section placeholders.
+
+| Section | Variants | Best modes |
+|---|---|---|
+| hero | monument, editorial, bleed | all |
+| manifesto | default, numbered | swiss, brutalist, immersive |
+| quote | default, monument, gutter | all |
+| two-column | editorial, dialogue, before-after | swiss, gallery |
+| cta | default, discord, monument | all |
+| stat-grid | default, bleed, vertical | swiss, brutalist, kinetic |
+| process | numbered, timeline, vertical | swiss, immersive |
+| footer | minimal, editorial, bleed | all |
+| logo-wall | grid, marquee, monolith | swiss, brutalist |
+| gallery | rigid, asymmetric, mosaic | gallery, immersive, kinetic |
+| full-bleed | type, image, color-field | immersive, brutalist, kinetic |
+| marquee | default, slow, vertical | kinetic, immersive, brutalist |
+
+## Style-Guide Adapter (`style.json`)
+
+External style guides drive a page via `style.json`. Both SuperStyleGuide and
+Pinterest Style Engine can export to this schema. Hand-authored is fine too.
+
+| Field | Required | Notes |
+|---|---|---|
+| `name` | yes | Free-form |
+| `palette` *or* `mood_id` | one of | Five hex codes or one of 9 mood presets |
+| `typography` | no | Per-voice family + weights + google flag |
+| `forces` | no | 10 dials (0-1), inherits from `mode_id` |
+| `motion_intensity` | no | 0-1, scales all `--dur-*` tokens |
+| `texture` | no | `none` / `grain` / `glass` |
+| `mode_id` | no | One of 5 mode presets |
+| `mood_id` | no | One of 9 mood presets |
+| `dos` / `donts` | no | Agent guidance arrays |
+
+Schema: `adapters/style-schema.json`. Workflow: `adapters/from-style-json.md`.
+Examples: `adapters/examples/`.
+
+## Textures (`data-texture`)
+
+`tokens/textures.css` ships three texture modes activated via `<html data-texture="...">`.
+
+| Value | Effect | Tunables |
+|---|---|---|
+| `none` (default) | No overlay | — |
+| `grain` | Living SVG noise overlay (page-level) | `--texture-grain-opacity`, `--texture-grain-scale`, `--texture-grain-duration` |
+| `glass` | `.cc-glass` utility with backdrop-filter (element-level opt-in) | `--texture-glass-blur`, `--texture-glass-saturate` |
+
+Both respect `prefers-reduced-motion: reduce`.
+
 ### File Structure
 
 ```

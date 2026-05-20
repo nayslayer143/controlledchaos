@@ -50,6 +50,14 @@ When building any page or component:
    <link rel="stylesheet" href="tokens/forces.css">
    ```
 
+6. **Compose from sections** when a page needs more than a hero + body. The 12
+   partials in `sections/` are mode-agnostic — token cascade handles per-mode
+   look. Read `sections/README.md` for the catalog.
+
+7. **Consume a `style.json`** when the user provides one. Read
+   `adapters/from-style-json.md` for the workflow. Style-guide source images
+   are reference-only — never embed them as page imagery.
+
 ## Design Principles (Non-Negotiable)
 - Type is the hero. If it works without color/images, you've won.
 - Tension is beauty. Near-symmetry over perfect symmetry.
