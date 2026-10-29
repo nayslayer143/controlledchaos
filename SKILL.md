@@ -156,6 +156,13 @@ Most pages use **two voices**: one hero voice (monument / editorial / brutalist)
 
 Add `class="motion-reveal"` to scroll-triggered elements, `motion-stagger` to children that should cascade, `motion-marquee` to a horizontal-scroll strip. Need a tiny IntersectionObserver snippet in `<script>` to add `.--visible` on enter — copy from any showcase page that uses it.
 
+### Pattern D: The construction show (objects, products, apps, exhibits)
+
+When the page is about one object, build it, take it apart and tour its parts on scroll. Read
+`~/.claude/skills/design/references/construction-kit.md`. Its Tier 1 (flat line art on a CSS 3D stage, no
+WebGL) is the controlledchaos-native one: SVG parts in the mood palette's line colours, part numbers in the
+mono voice, leader lines as hairlines.
+
 ---
 
 ## Hard-won knowledge
